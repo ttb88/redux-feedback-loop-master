@@ -32,6 +32,7 @@ h4 {
 h2 {
   font-size: 2.4em;
   letter-spacing: 1px;
+  color: #949494;
 }
 
 .question-div {
@@ -49,5 +50,19 @@ h2 {
   margin: 0 20px;
   color: #38c985;
   vertical-align: 2px;
+}
+
+
+.question-div {
+  background-color: white;
+  box-shadow: 0 2px 2px #d8d8d8;
+  padding-bottom: 100px;
+  border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+.button-div .material-icons {
+  color: white;
+  margin: 0;
+  font-size: 2.2rem;
 }
 
