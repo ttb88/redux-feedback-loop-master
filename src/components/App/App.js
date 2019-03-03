@@ -15,11 +15,17 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import Icon from '@material-ui/core/Icon';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 
 
 const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
   button: {
     margin: theme.spacing.unit,
   },
@@ -27,11 +33,22 @@ const styles = theme => ({
   //   display: 'none',
   // },
   cssRoot: {
-    // color: theme.palette.getContrastText(green[500]),
     backgroundColor: blue[500],
     '&:hover': {
       backgroundColor: blue[600],
     },
+  },
+  card: {
+    width: 300,
+    height: 300,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  title: {
+    fontSize: 35,
+  },
+  pos: {
+    marginBottom: 12,
   },
 });
 
@@ -45,13 +62,13 @@ const theme = createMuiTheme({
 
 
 class App extends Component {
+
   state = {
     value: '',
   };
 
 
 
-  
   handleChange = event => {
     this.setState({ value: event.target.value });
   };
@@ -59,6 +76,7 @@ class App extends Component {
 
   render() {
     const { classes } = this.props;
+    const bull = <span className={classes.bullet}>•</span>;
 
     return (
       <div className="App">
@@ -70,16 +88,13 @@ class App extends Component {
           </div>
         </header>
 
-        {/* <div>
-          <h2>How are you feeling today?</h2>
-        </div> */}
-
+        <MuiThemeProvider theme={theme}>
         <div className="question-div">
-          <MuiThemeProvider theme={theme}>
+         
             <FormControl component="fieldset">
 
               <h2>How are you feeling today?</h2>
-              {/* <FormLabel style={{ fontSize: '2rem'}}  color="primary" component="legend">How are you feeling today?</FormLabel> */}
+      
               <div className="radio-buttons">
                 <RadioGroup
                   style={{ display: 'block' }}
@@ -125,15 +140,94 @@ class App extends Component {
                 </RadioGroup>
                 <div className="button-div">
                   <Button style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
-                  Next
+                    Next
                  {/* <Icon className={classes.rightIcon}>arrow_right</Icon> */}
-                  <i class="material-icons">skip_next</i>
-                </Button>
+                    <i class="material-icons">skip_next</i>
+                  </Button>
                 </div>
               </div>
             </FormControl>
-          </MuiThemeProvider>
         </div>
+
+        <div className="review-form">
+          <h2>Feedback Review</h2>
+        </div>
+          <div className={classes.root} style={{paddingRight: 20, paddingLeft: 20}}>
+            <Grid container direction="row" justify="center"
+              alignItems="center">
+              <Grid >
+                <Card className={classes.card}>
+                  <CardContent>
+                    <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
+                      Feelings
+                    </Typography>
+                    <Typography variant="h2" component="h2">
+                     5
+                      </Typography>
+                  </CardContent>
+                  {/* <CardActions>
+                    <Button size="small">Learn More</Button>
+                  </CardActions> */}
+                </Card>
+              </Grid>
+              <Grid >
+                <Card className={classes.card}>
+                  <CardContent>
+                    <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
+                      Understanding
+                    </Typography>
+                    <Typography variant="h2" component="h2">
+                      5
+                      </Typography>
+                  </CardContent>
+                  {/* <CardActions>
+                    <Button size="small">Learn More</Button>
+                  </CardActions> */}
+                </Card>
+              </Grid>
+              <Grid >
+                <Card className={classes.card}>
+                  <CardContent>
+                    <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
+                      Support
+                    </Typography>
+                    <Typography variant="h2" component="h2">
+                      5
+                      </Typography>
+                  </CardContent>
+                  {/* <CardActions>
+                    <Button size="small">Learn More</Button>
+                  </CardActions> */}
+                </Card>
+              </Grid>
+              <Grid >
+                <Card className={classes.card}>
+                  <CardContent>
+                    <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
+                      Comments
+                    </Typography>
+                    <Typography variant="h2" component="h2">
+                      5
+                      </Typography>
+                  </CardContent>
+                  {/* <CardActions>
+                    <Button size="small">Learn More</Button>
+                  </CardActions> */}
+                </Card>
+        
+              </Grid>
+            </Grid>
+            <div className="button-div">
+              <Button style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" disabled className={classNames(classes.margin, classes.cssRoot)}>
+                Incomplete
+                 {/* <Icon className={classes.rightIcon}>arrow_right</Icon> */}
+                <i class="material-icons">indeterminate_check_box</i>
+              </Button>
+            </div>
+          </div>
+
+        </MuiThemeProvider>
+
       </div>
 
     );
