@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -201,18 +202,39 @@ const styles = theme => ({
     },
 });
 
+
+
 class EnhancedTable extends React.Component {
     state = {
         order: 'asc',
         orderBy: 'feeling',
         selected: [],
-        data: [
-            createData(1, 305, 3.7, 'text'),
-            createData(2, 452, 25.0, 'text'),
-        ],
+        data: [],
         page: 0,
         rowsPerPage: 5,
     };
+
+
+
+
+    //DOM is ready
+    componentDidMount() { // react Component method
+        this.getFeedback();
+    }
+
+    getFeedback = () => {
+        axios({
+            method: 'GET',
+            url: '/feedback'
+        }).then((response) => {
+            console.log(response.data);
+            const feedbackArray = response.data.map(item => createData(item.feeling, item.understanding, item.support, item.comments))
+            this.setState ({
+                data: feedbackArray,
+            })
+        });
+    }
+
 
     handleRequestSort = (event, property) => {
         const orderBy = property;
@@ -282,7 +304,7 @@ class EnhancedTable extends React.Component {
                             onRequestSort={this.handleRequestSort}
                             rowCount={data.length}
                         />
-                     
+
                         <TableBody>
                             {stableSort(data, getSorting(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)

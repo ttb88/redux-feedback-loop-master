@@ -15,5 +15,17 @@ router.post('/', (req, res) => {
     })
 })
 
+// will return all items from "feedback" table on database ordered ascending by "date"
+router.get('/', (req, res) => {
+    pool.query(`SELECT * FROM "feedback" ORDER BY "date" ASC;`)
+        .then((result) => {
+            feedback = result.rows;
+            res.send(feedback);
+        }).catch((error) => {
+            console.log('errors with feedback select', error);
+            res.sendStatus(500);
+        })
+})
+
 
 module.exports = router;
