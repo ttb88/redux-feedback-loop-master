@@ -44,6 +44,7 @@ class FeedbackSubmitted extends Component {
   
     handleClick = () => {
         console.log('next button clicked');
+        this.props.dispatch({ type: 'RESET_FEEDBACK'});
         this.props.history.push("/");
     }
 

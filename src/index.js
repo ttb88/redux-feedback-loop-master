@@ -30,6 +30,9 @@ const feedbackReducer = (state = feedback, action) => {
     else if (action.type === 'SET_FEEDBACK_COMMENTS') {
         return { ...state, comments: action.payload };
     }
+    else if (action.type === 'RESET_FEEDBACK') {
+        return {};
+    }
     return state;
 }
 
