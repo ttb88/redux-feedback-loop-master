@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 // import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Header from '../Header/Header';
 
 
 
@@ -60,11 +61,21 @@ const theme = createMuiTheme({
 
 class FeedbackReview extends Component {
 
+    headerDisplayCheck = () => {
+        if (this.props.feedbackReducer.feeling == '' || this.props.feedbackReducer.understanding == '' || this.props.feedbackReducer.support == '' || this.props.feedbackReducer.comments == '') {
+            return ''
+        }
+        else {
+            return <Header />
+        }
+    }
+
 
     buttonEnabler = () => {
         console.log(this.props.feedbackReducer.feeling);
         
         const { classes } = this.props;
+        
         if (this.props.feedbackReducer.feeling == '' || this.props.feedbackReducer.understanding == '' || this.props.feedbackReducer.support == '' || this.props.feedbackReducer.comments == '') {
             return <Button style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" disabled className={classNames(classes.margin, classes.cssRoot)}>
                 Incomplete
@@ -100,6 +111,8 @@ class FeedbackReview extends Component {
 
 
         return (
+            <div>
+                {this.headerDisplayCheck()}
             <MuiThemeProvider theme={theme}>
                 <div className="review-form">
                     <h2>Feedback Review</h2>
@@ -176,7 +189,7 @@ class FeedbackReview extends Component {
                 </div>
 
             </MuiThemeProvider>
-
+            </div>
         );
     }
 }

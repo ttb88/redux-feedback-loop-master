@@ -14,6 +14,7 @@ import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import FeedbackReview from '../FeedbackReview/FeedbackReview';
+import Header from '../Header/Header';
 
 
 
@@ -79,7 +80,8 @@ class Comments extends Component {
         const { classes } = this.props;
 
         return (
-            <div className="App">
+            <div>
+                <Header />
                 <MuiThemeProvider theme={theme}>
                     <div className="question-div">
 

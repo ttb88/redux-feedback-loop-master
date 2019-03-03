@@ -8,6 +8,7 @@ import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import FeedbackReview from '../FeedbackReview/FeedbackReview';
 import FeedbackSubmitted from '../FeedbackSubmitted/FeedbackSubmitted';
+import Admin from '../Admin/Admin';
 
 
 class App extends Component {
@@ -17,14 +18,6 @@ class App extends Component {
 
     return (
       <div className="App">
-
-        <header className="App-header">
-          <div className="App-title">
-            <h1>Feedback!</h1>
-            <h4>Don't forget it!</h4>
-          </div>
-        </header>
-
         <Router>
           <div>
             <Route exact path="/" component={Feeling} />
@@ -33,6 +26,7 @@ class App extends Component {
             <Route exact path="/comments" component={Comments} />
             <Route exact path="/feedback-review" component={FeedbackReview} />
             <Route exact path="/submitted" component={FeedbackSubmitted} />
+            <Route exact path="/admin" component={Admin} />
           </div>
         </Router>
 
@@ -42,7 +36,6 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;
 

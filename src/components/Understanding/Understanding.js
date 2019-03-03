@@ -14,6 +14,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FeedbackReview from '../FeedbackReview/FeedbackReview';
+import Header from '../Header/Header';
 
 
 const styles = theme => ({
@@ -69,7 +70,8 @@ class Understanding extends Component {
         const { classes } = this.props;
 
         return (
-            <div className="App">
+            <div>
+                <Header />
                 <MuiThemeProvider theme={theme}>
                     <div className="question-div">
 
