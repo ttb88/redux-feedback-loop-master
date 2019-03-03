@@ -58,16 +58,38 @@ const theme = createMuiTheme({
 
 
 
+
 class FeedbackReview extends Component {
+    buttonEnabler = () => {
+        console.log(this.props.feedbackReducer.feeling);
+        
+        const { classes } = this.props;
+        if (this.props.feedbackReducer.feeling == '' || this.props.feedbackReducer.understanding == '' || this.props.feedbackReducer.support == '' || this.props.feedbackReducer.comments == '') {
+            return <Button style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" disabled className={classNames(classes.margin, classes.cssRoot)}>
+                Incomplete
+                <i className="material-icons">indeterminate_check_box</i>
+            </Button>
+        }
+        else {
+            return <Button style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
+                Submit
+                <i className="material-icons">check_box</i>
+            </Button>
+        }
+    }
 
     render() {
         const { classes } = this.props;
         const bull = <span className={classes.bullet}>•</span>;
 
+        
+
+
         return (
             <MuiThemeProvider theme={theme}>
                 <div className="review-form">
                     <h2>Feedback Review</h2>
+                    <p>review and submit once complete</p>
                 </div>
                 <div className={classes.root} style={{ paddingRight: 20, paddingLeft: 20 }}>
                     <Grid container direction="row" justify="center"
@@ -135,11 +157,7 @@ class FeedbackReview extends Component {
                         </Grid>
                     </Grid>
                     <div className="button-div">
-                        <Button style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" disabled className={classNames(classes.margin, classes.cssRoot)}>
-                            Incomplete
-                             {/* <Icon className={classes.rightIcon}>arrow_right</Icon> */}
-                            <i className="material-icons">indeterminate_check_box</i>
-                        </Button>
+                        {this.buttonEnabler()}
                     </div>
                 </div>
 

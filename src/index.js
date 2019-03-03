@@ -8,8 +8,16 @@ import logger from 'redux-logger'; // tracks redux state before and after
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
+const feedback = {
+    feeling: '',
+    understanding: '',
+    support: '',
+    comments: '',
+}
 
-const feedbackReducer = (state = {}, action) => {
+
+
+const feedbackReducer = (state = feedback, action) => {
     if (action.type === 'SET_FEEDBACK_FEELING') {
         return { ...state, feeling: action.payload};
     }

@@ -115,7 +115,7 @@ class Comments extends Component {
                                 </FormControl>
                                 <div className="button-div">
                                     <Button onClick={this.handleClick} type="submit" value="submit" style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
-                                        Submit
+                                        Next
                                         <i className="material-icons">done</i>
                                     </Button>
                                 </div>
