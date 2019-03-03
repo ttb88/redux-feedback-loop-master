@@ -86,6 +86,7 @@ class FeedbackReview extends Component {
             url: '/feedback',
             data: this.props.feedbackReducer
         }).then(() => {
+            this.props.history.push("/submitted");
         });  
     }
 

@@ -81,3 +81,7 @@ p {
   margin-bottom: 0;
 }
 
+.submitted-icon .material-icons {
+  font-size: 200px;
+}
+
