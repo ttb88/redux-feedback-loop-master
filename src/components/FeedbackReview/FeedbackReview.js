@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
-// import './App.css';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -60,6 +59,8 @@ const theme = createMuiTheme({
 
 
 class FeedbackReview extends Component {
+
+
     buttonEnabler = () => {
         console.log(this.props.feedbackReducer.feeling);
         
@@ -71,12 +72,24 @@ class FeedbackReview extends Component {
             </Button>
         }
         else {
-            return <Button style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
+            return <Button onClick={this.handleFeedbackSubmit} style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
                 Submit
                 <i className="material-icons">check_box</i>
             </Button>
         }
     }
+
+    handleFeedbackSubmit = () => {
+        console.log('feedback submit clicked');
+        axios({
+            method: 'POST',
+            url: '/feedback',
+            data: this.props.feedbackReducer
+        }).then(() => {
+        });  
+    }
+
+
 
     render() {
         const { classes } = this.props;

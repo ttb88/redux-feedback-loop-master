@@ -1,6 +1,7 @@
 // feedback.router.js
 const express = require('express');
 const router = express.Router();
+const pool = require('../modules/pool.js');
 
 
 // will receive new feedback item and insert into the applicable fields on "feedback" table in database
