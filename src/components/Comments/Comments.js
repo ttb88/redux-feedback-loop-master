@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -12,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
+import FeedbackReview from '../FeedbackReview/FeedbackReview';
 
 
 
@@ -47,18 +49,19 @@ const theme = createMuiTheme({
 class Comments extends Component {
 
     state = {
-        name: '',
+        input: '',
     };
 
 
 
     handleChange = event => {
-        this.setState({ name: event.target.value });
+        this.setState({ input: event.target.value });
     };
 
     handleClick = () => {
         console.log('next button clicked');
-        this.props.history.push("/support");
+        this.props.dispatch({ type: 'SET_FEEDBACK_COMMENTS', payload: this.state.input });
+        this.props.history.push("/feedback-review");
     }
 
     componentDidMount() {
@@ -120,7 +123,7 @@ class Comments extends Component {
                     </div>
 
                 </MuiThemeProvider>
-
+                <FeedbackReview />
             </div>
 
         );
@@ -132,5 +135,9 @@ Comments.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Comments);
+const mapReduxStateToProps = (reduxState) => {
+    return reduxState;
+}
+
+export default withStyles(styles)(connect(mapReduxStateToProps)(Comments));
 

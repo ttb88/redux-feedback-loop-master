@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -13,6 +14,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import FeedbackReview from '../FeedbackReview/FeedbackReview';
 
 
 
@@ -51,6 +53,7 @@ class Support extends Component {
 
     handleClick = () => {
         console.log('next button clicked');
+        this.props.dispatch({ type: 'SET_FEEDBACK_SUPPORT', payload: this.state.value });
         this.props.history.push("/comments");
     }
 
@@ -79,7 +82,7 @@ class Support extends Component {
                                     onChange={this.handleChange}
                                     row
                                 >
-                                    <i className="material-icons">sentiment_very_dissatisfied</i>
+                                    <i className="material-icons">thumb_down</i>
                                     <FormControlLabel
                                         value="1"
                                         control={<Radio color="primary" />}
@@ -110,7 +113,7 @@ class Support extends Component {
                                         label={<Typography style={{ fontSize: '1.3rem', color: '#949494' }}>5</Typography>}
                                         labelPlacement="bottom"
                                     />
-                                    <i className="material-icons">sentiment_very_satisfied</i>
+                                    <i className="material-icons">thumb_up</i>
                                 </RadioGroup>
                                 <div className="button-div">
                                     <Button onClick={this.handleClick} type="submit" value="submit" style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
@@ -122,6 +125,7 @@ class Support extends Component {
                         </FormControl>
                     </div>
                 </MuiThemeProvider>
+                <FeedbackReview />
             </div>
         );
     }
@@ -131,5 +135,9 @@ Support.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Support);
+const mapReduxStateToProps = (reduxState) => {
+    return reduxState;
+}
+
+export default withStyles(styles)(connect(mapReduxStateToProps)(Support));
 

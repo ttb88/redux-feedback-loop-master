@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -13,7 +14,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-
+import FeedbackReview from '../FeedbackReview/FeedbackReview';
 
 
 const styles = theme => ({
@@ -52,6 +53,7 @@ class Feeling extends Component {
 
     handleClick = () => {
         console.log('next button clicked');
+        this.props.dispatch({ type: 'SET_FEEDBACK_FEELING', payload: this.state.value});
         this.props.history.push("/understanding");
     }
 
@@ -59,7 +61,7 @@ class Feeling extends Component {
 
 
 
-    
+
     render() {
         const { classes } = this.props;
 
@@ -123,6 +125,7 @@ class Feeling extends Component {
                         </FormControl>
                     </div>
                 </MuiThemeProvider>
+                <FeedbackReview />
             </div>
         );
     }
@@ -132,5 +135,9 @@ Feeling.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Feeling);
+const mapReduxStateToProps = (reduxState) => {
+    return reduxState;
+}
+
+export default withStyles(styles)(connect(mapReduxStateToProps)(Feeling));
 
