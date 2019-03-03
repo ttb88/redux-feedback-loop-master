@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 // import './App.css';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -78,7 +79,7 @@ class FeedbackReview extends Component {
                                         Feelings
                                     </Typography>
                                     <Typography variant="h2" component="h2" style={{ color: '#38c985' }}>
-                                        5
+                                        {this.props.feedbackReducer.feeling}
                                      </Typography>
                                 </CardContent>
                                 {/* <CardActions>
@@ -93,7 +94,7 @@ class FeedbackReview extends Component {
                                         Understanding
                                      </Typography>
                                     <Typography variant="h2" component="h2" style={{ color: '#38c985' }}>
-                                        5
+                                        {this.props.feedbackReducer.understanding}
                                  </Typography>
                                 </CardContent>
                                 {/* <CardActions>
@@ -108,7 +109,7 @@ class FeedbackReview extends Component {
                                         Support
                                      </Typography>
                                     <Typography variant="h2" component="h2" style={{ color: '#38c985' }}>
-                                        5
+                                        {this.props.feedbackReducer.support}
                                  </Typography>
                                 </CardContent>
                                 {/* <CardActions>
@@ -122,8 +123,8 @@ class FeedbackReview extends Component {
                                     <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
                                         Comments
                                    </Typography>
-                                    <Typography variant="h2" component="h2" style={{ color: '#38c985' }}>
-                                        5
+                                    <Typography variant="h6" component="h6" style={{ color: '#38c985', textAlign: 'left' }}>
+                                        {this.props.feedbackReducer.comments}
                                   </Typography>
                                 </CardContent>
                                 {/* <CardActions>
@@ -152,5 +153,9 @@ FeedbackReview.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FeedbackReview);
+const mapReduxStateToProps = (reduxState) => {
+    return reduxState;
+}
+
+export default withStyles(styles)(connect(mapReduxStateToProps)(FeedbackReview));
 
