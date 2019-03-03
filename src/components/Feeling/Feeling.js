@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -18,32 +17,14 @@ import FormControl from '@material-ui/core/FormControl';
 
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1,
-    },
     button: {
         margin: theme.spacing.unit,
     },
-    // input: {
-    //   display: 'none',
-    // },
     cssRoot: {
         backgroundColor: blue[500],
         '&:hover': {
             backgroundColor: blue[600],
         },
-    },
-    card: {
-        width: 300,
-        height: 300,
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    title: {
-        fontSize: 35,
-    },
-    pos: {
-        marginBottom: 12,
     },
 });
 
@@ -51,9 +32,10 @@ const theme = createMuiTheme({
     palette: {
         primary: { main: blue[500] },
     },
+    typography: {
+        useNextVariants: true,
+    },
 });
-
-
 
 
 class Feeling extends Component {
@@ -68,16 +50,23 @@ class Feeling extends Component {
         this.setState({ value: event.target.value });
     };
 
+    handleClick = () => {
+        console.log('next button clicked');
+        this.props.history.push("/understanding");
+    }
 
+
+
+
+
+    
     render() {
         const { classes } = this.props;
-        const bull = <span className={classes.bullet}>•</span>;
 
         return (
-            <div className="App">
+            <div>
                 <MuiThemeProvider theme={theme}>
                     <div className="question-div">
-
                         <FormControl component="fieldset">
 
                             <h2>How are you feeling today?</h2>
@@ -90,9 +79,8 @@ class Feeling extends Component {
                                     value={this.state.value}
                                     onChange={this.handleChange}
                                     row
-
                                 >
-                                    <i class="material-icons">sentiment_very_dissatisfied</i>
+                                    <i className="material-icons">sentiment_very_dissatisfied</i>
                                     <FormControlLabel
                                         value="1"
                                         control={<Radio color="primary" />}
@@ -123,23 +111,19 @@ class Feeling extends Component {
                                         label={<Typography style={{ fontSize: '1.3rem', color: '#949494' }}>5</Typography>}
                                         labelPlacement="bottom"
                                     />
-                                    <i class="material-icons">sentiment_very_satisfied</i>
+                                    <i className="material-icons">sentiment_very_satisfied</i>
                                 </RadioGroup>
                                 <div className="button-div">
-                                    <Button style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
+                                    <Button onClick={this.handleClick} type="submit" value="submit" style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
                                         Next
-                 {/* <Icon className={classes.rightIcon}>arrow_right</Icon> */}
-                                        <i class="material-icons">skip_next</i>
+                                        <i className="material-icons">skip_next</i>
                                     </Button>
                                 </div>
                             </div>
                         </FormControl>
                     </div>
-
                 </MuiThemeProvider>
-
             </div>
-
         );
     }
 }

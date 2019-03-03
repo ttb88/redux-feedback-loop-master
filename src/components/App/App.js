@@ -12,7 +12,7 @@ import FeedbackReview from '../FeedbackReview/FeedbackReview';
 class App extends Component {
 
   render() {
-    const { classes } = this.props;
+    // const { classes } = this.props;
 
     return (
       <div className="App">
@@ -28,7 +28,7 @@ class App extends Component {
           <div>
             <Route exact path="/" component={Feeling} />
             <Route exact path="/understanding" component={Understanding} />
-            <Route exact path="/suport" component={Support} />
+            <Route exact path="/support" component={Support} />
             <Route exact path="/comments" component={Comments} />
           </div>
         </Router>
