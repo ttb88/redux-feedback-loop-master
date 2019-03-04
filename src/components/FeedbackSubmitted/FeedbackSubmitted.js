@@ -46,7 +46,7 @@ class FeedbackSubmitted extends Component {
         const { classes } = this.props;
 
         return (
-            <div>
+            <div className='submitted-div'>
                 <Header />
                 <MuiThemeProvider theme={theme}>
                     <div className="submitted-div">
@@ -56,7 +56,7 @@ class FeedbackSubmitted extends Component {
                             <span className="submitted-icon"><i className="material-icons">done_all</i></span>
 
                             <div className="button-div">
-                                <Button onClick={this.handleClick} type="submit" value="submit" style={{ fontSize: '20px', marginTop: '30px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
+                                <Button onClick={this.handleClick} type="submit" value="submit" style={{ fontSize: '16px', marginTop: '30px' }} size='medium' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
                                     Leave New Feedback
                                         <i className="material-icons">skip_next</i>
                                 </Button>

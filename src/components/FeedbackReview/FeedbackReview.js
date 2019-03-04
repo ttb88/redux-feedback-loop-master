@@ -29,14 +29,14 @@ const styles = theme => ({
         },
     },
     card: {
-        width: 300,
-        height: 200,
+        width: 175,
+        height: 195,
         marginLeft: 10,
         marginRight: 10,
         marginBottom: 10,
     },
     title: {
-        fontSize: 25,
+        fontSize: 20,
     },
     pos: {
         marginBottom: 20,
@@ -68,23 +68,25 @@ class FeedbackReview extends Component {
         }
     }
 
-     // the disabled until all 4 feedback questions have been answered 
+    // the disabled until all 4 feedback questions have been answered 
     buttonEnabler = () => {
         console.log(this.props.feedbackReducer.feeling);
 
         const { classes } = this.props;
 
         if (this.props.feedbackReducer.feeling === '' || this.props.feedbackReducer.understanding === '' || this.props.feedbackReducer.support === '' || this.props.feedbackReducer.comments === '') {
-            return <Button style={{ fontSize: '20px', marginTop: '40px' }} size='large' variant="contained" color="secondary" disabled className={classNames(classes.margin, classes.cssRoot)}>
+            return <div className="button-div"><Button style={{ fontSize: '18px', marginTop: '0px' }} size='medium' variant="contained" color="secondary" disabled className={classNames(classes.margin, classes.cssRoot)}>
                 Incomplete
                 <i className="material-icons">indeterminate_check_box</i>
             </Button>
+            </div>
         }
         else {
-            return <Button onClick={this.handleFeedbackSubmit} style={{ fontSize: '20px', marginTop: '40px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
+            return <div className="button-div"><Button onClick={this.handleFeedbackSubmit} style={{ fontSize: '18px', marginTop: '20px' }} size='medium' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
                 Submit
                 <i className="material-icons">check_box</i>
             </Button>
+            </div>
         }
     }
 
@@ -129,7 +131,7 @@ class FeedbackReview extends Component {
                                         <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
                                             Feelings
                                     </Typography>
-                                        <Typography variant="h2" component="h2" style={{ color: '#2195f3d7' }}>
+                                        <Typography variant="h4" component="h4" style={{ color: '#2195f3d7' }}>
                                             {this.props.feedbackReducer.feeling}
                                         </Typography>
                                     </CardContent>
@@ -142,7 +144,7 @@ class FeedbackReview extends Component {
                                         <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
                                             Understanding
                                      </Typography>
-                                        <Typography variant="h2" component="h2" style={{ color: '#2195f3d7' }}>
+                                        <Typography variant="h4" component="h4" style={{ color: '#2195f3d7' }}>
                                             {this.props.feedbackReducer.understanding}
                                         </Typography>
                                     </CardContent>
@@ -155,7 +157,7 @@ class FeedbackReview extends Component {
                                         <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
                                             Support
                                      </Typography>
-                                        <Typography variant="h2" component="h2" style={{ color: '#2195f3d7' }}>
+                                        <Typography variant="h4" component="h4" style={{ color: '#2195f3d7' }}>
                                             {this.props.feedbackReducer.support}
                                         </Typography>
                                     </CardContent>
@@ -168,7 +170,7 @@ class FeedbackReview extends Component {
                                         <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
                                             Comments
                                    </Typography>
-                                        <Typography variant="h6" component="h6" style={{ color: '#2195f3d7', lineHeight: '20px' }}>
+                                        <Typography variant="h6" component="h6" style={{ color: '#2195f3d7', lineHeight: '20px', fontSize: '16px' }}>
                                             {this.props.feedbackReducer.comments}
                                         </Typography>
                                     </CardContent>
@@ -177,7 +179,7 @@ class FeedbackReview extends Component {
                             </Grid>
                         </Grid>
                         <div className="button-div">
-                        {this.buttonEnabler()}
+                            {this.buttonEnabler()}
                         </div>
                     </div>
 

@@ -19,10 +19,10 @@
   color: white;
   text-align: center;
   letter-spacing: 3px;
-  margin-top: 0;
-  padding: 38px 0;
-  font-size: 3.1em;
+  padding: 30px 0;
+  font-size: 2.2em;
   margin: 0;
+  margin-top: -20px;
 }
 
 /* ------------------------------------- */
@@ -33,18 +33,19 @@ h1 {
   margin: 0;
 }
 
+h2 {
+  font-size: 1.7em;
+  letter-spacing: 1px;
+  color: #7e7d7d;
+}
+
+
 h4 {
-  font-size: 20px;
+  font-size: 18px;
   margin: 0;
   margin-top: -20px;
 }
 
-
-h2 {
-  font-size: 2.4em;
-  letter-spacing: 1px;
-  color: #7e7d7d;
-}
 
 /* ------------------------------------- */
 /* REUSABLE COMPONENTS */
@@ -59,11 +60,11 @@ p {
 
 .radio-buttons {
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .material-icons {
-  font-size: 2.3rem;
+  font-size: 2.1rem;
   margin: 0 20px;
   color: #38c985;
   vertical-align: 2px;
@@ -72,7 +73,7 @@ p {
 .button-div .material-icons {
   color: white;
   margin: 0;
-  font-size: 2.2rem;
+  font-size: 2rem;
   margin-left: 4px;
 }
 
@@ -82,14 +83,10 @@ p {
 /* ------------------------------------- */
 
 .question-div {
-  margin-top: 60px;
-}
-
-.question-div {
   background-color: white;
   box-shadow: 0 2px 2px #d8d8d8;
-  padding-bottom: 80px;
-  margin-top: 30px;
+  padding-bottom: 48px;
+  margin-top: 20px;
   border-bottom: 1px solid rgb(194, 194, 194);
 }
 
@@ -104,10 +101,11 @@ p {
 
 .review-form h2 {
   margin-bottom: 0;
+  font-size: 2rem;
 }
 
 .review-images {
-  height: 65px;
+  height: 50px;
   filter: invert(.4);
 }
 
@@ -116,7 +114,11 @@ p {
 /* ------------------------------------- */
 
 .submitted-icon .material-icons {
-  font-size: 200px;
+  font-size: 125px;
+}
+
+.submitted-div h2 {
+  margin-top: 60px;
 }
 
 

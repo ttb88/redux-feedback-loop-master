@@ -85,37 +85,37 @@ class Feeling extends Component {
                                     <FormControlLabel
                                         value="1"
                                         control={<Radio color="primary" />}
-                                        label={<Typography style={{ fontSize: '1.3rem', color: '#949494' }}>1</Typography>}
+                                        label={<Typography style={{ fontSize: '1.1rem', color: '#8a8989' }}>1</Typography>}
                                         labelPlacement="bottom"
                                     />
                                     <FormControlLabel
                                         value="2"
                                         control={<Radio color="primary" />}
-                                        label={<Typography style={{ fontSize: '1.3rem', color: '#949494' }}>2</Typography>}
+                                        label={<Typography style={{ fontSize: '1.1rem', color: '#8a8989' }}>2</Typography>}
                                         labelPlacement="bottom"
                                     />
                                     <FormControlLabel
                                         value="3"
                                         control={<Radio color="primary" />}
-                                        label={<Typography style={{ fontSize: '1.3rem', color: '#949494' }}>3</Typography>}
+                                        label={<Typography style={{ fontSize: '1.1rem', color: '#8a8989' }}>3</Typography>}
                                         labelPlacement="bottom"
                                     />
                                     <FormControlLabel
                                         value="4"
                                         control={<Radio color="primary" />}
-                                        label={<Typography style={{ fontSize: '1.3rem', color: '#949494' }}>4</Typography>}
+                                        label={<Typography style={{ fontSize: '1.1rem', color: '#8a8989' }}>4</Typography>}
                                         labelPlacement="bottom"
                                     />
                                     <FormControlLabel
                                         value="5"
                                         control={<Radio color="primary" />}
-                                        label={<Typography style={{ fontSize: '1.3rem', color: '#949494' }}>5</Typography>}
+                                        label={<Typography style={{ fontSize: '1.1rem', color: '#8a8989' }}>5</Typography>}
                                         labelPlacement="bottom"
                                     />
                                     <i className="material-icons">sentiment_very_satisfied</i>
                                 </RadioGroup>
                                 <div className="button-div">
-                                    <Button onClick={this.handleClick} type="submit" value="submit" style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
+                                    <Button onClick={this.handleClick} type="submit" value="submit" style={{ fontSize: '18px', marginTop: '35px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
                                         Next
                                         <i className="material-icons">skip_next</i>
                                     </Button>
