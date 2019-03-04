@@ -25,6 +25,25 @@
   margin-top: -20px;
 }
 
+.header-text-icon-div {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.header-icon {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    bottom: -25px;
+    right: 28px;
+}
+
+.admin-header {
+  font-size: .9em;
+  padding: 20px 0;
+}
+
 /* ------------------------------------- */
 /* HEADINGS */
 /* ------------------------------------- */
@@ -64,7 +83,7 @@ p {
 }
 
 .material-icons {
-  font-size: 2.1rem;
+  font-size: 2.1em;
   margin: 0 20px;
   color: #38c985;
   vertical-align: 2px;
@@ -73,7 +92,7 @@ p {
 .button-div .material-icons {
   color: white;
   margin: 0;
-  font-size: 2rem;
+  font-size: 2em;
   margin-left: 4px;
 }
 
@@ -94,6 +113,10 @@ p {
   vertical-align: -32px;
 }
 
+.comments-input .button-div .material-icons {
+  font-size: 1.6em;
+}
+
 /* ------------------------------------- */
 /* REVIEW SECTION */
 /* ------------------------------------- */
@@ -101,7 +124,7 @@ p {
 
 .review-form h2 {
   margin-bottom: 0;
-  font-size: 2rem;
+  font-size: 2em;
 }
 
 .review-images {
@@ -114,7 +137,7 @@ p {
 /* ------------------------------------- */
 
 .submitted-icon .material-icons {
-  font-size: 125px;
+  font-size: 110px;
 }
 
 .submitted-div h2 {

@@ -206,7 +206,7 @@ EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
 const styles = theme => ({
     root: {
-        width: '60%',
+        width: '75%',
         marginLeft: 'auto',
         marginRight: 'auto',
         marginTop: theme.spacing.unit * 3,
@@ -228,7 +228,7 @@ class EnhancedTable extends React.Component {
         selected: [],
         data: [],
         page: 0,
-        rowsPerPage: 5,
+        rowsPerPage: 10,
     };
 
 
@@ -250,9 +250,7 @@ class EnhancedTable extends React.Component {
             this.setState({
                 data: feedbackArray,
                 selected: [],
-            }).catch(function () {
-                console.log('Feedback could not be received');
-            });
+            })
         });
     }
 
@@ -346,12 +344,12 @@ class EnhancedTable extends React.Component {
                                             <TableCell padding="checkbox">
                                                 <Checkbox checked={isSelected} />
                                             </TableCell>
-                                            <TableCell style={{ width: '15%' }} align="right" >
+                                            <TableCell style={{ width: '10%' }} align="right" >
                                                 {n.feeling}
                                             </TableCell>
-                                            <TableCell style={{ width: '15%' }} align="right">{n.understanding} </TableCell>
-                                            <TableCell style={{ width: '15%' }} align="right">{n.support}</TableCell>
-                                            <TableCell style={{ width: '55%' }} align="left">{n.comments}</TableCell>
+                                            <TableCell style={{ width: '10%' }} align="right">{n.understanding} </TableCell>
+                                            <TableCell style={{ width: '10%' }} align="right">{n.support}</TableCell>
+                                            <TableCell style={{ width: '60%' }} align="left">{n.comments}</TableCell>
                                         </TableRow>
                                     );
                                 })}

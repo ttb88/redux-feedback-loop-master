@@ -30,6 +30,7 @@ const styles = theme => ({
     formControl: {
         margin: theme.spacing.unit,
         width: 600,
+        height: 50,
     },
 });
 
