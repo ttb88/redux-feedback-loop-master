@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-// import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
-// import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import blue from '@material-ui/core/colors/blue';
 import Button from '@material-ui/core/Button';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FeedbackReview from '../FeedbackReview/FeedbackReview';
 import Header from '../Header/Header';
 
 
@@ -42,10 +34,10 @@ const theme = createMuiTheme({
 
 class FeedbackSubmitted extends Component {
 
-  
+    // dispatches clear of feedback object on redux and then redirects back to 'Feeling' component to begin new feedback
     handleClick = () => {
         console.log('next button clicked');
-        this.props.dispatch({ type: 'RESET_FEEDBACK'});
+        this.props.dispatch({ type: 'RESET_FEEDBACK' });
         this.props.history.push("/");
     }
 
@@ -59,20 +51,17 @@ class FeedbackSubmitted extends Component {
                 <MuiThemeProvider theme={theme}>
                     <div className="submitted-div">
                         <FormControl component="fieldset">
-                      
+
                             <h2>Thank you... feedback has been submitted!</h2>
                             <span className="submitted-icon"><i className="material-icons">done_all</i></span>
 
-                            <div className="radio-buttons">
-                              
-                       
-                                <div className="button-div">
-                                    <Button onClick={this.handleClick} type="submit" value="submit" style={{ fontSize: '20px', marginTop: '30px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
-                                        Leave New Feedback
+                            <div className="button-div">
+                                <Button onClick={this.handleClick} type="submit" value="submit" style={{ fontSize: '20px', marginTop: '30px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
+                                    Leave New Feedback
                                         <i className="material-icons">skip_next</i>
-                                    </Button>
-                                </div>
+                                </Button>
                             </div>
+
                         </FormControl>
                     </div>
                 </MuiThemeProvider>

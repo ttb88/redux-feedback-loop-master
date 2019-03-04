@@ -1,11 +1,15 @@
+/* ------------------------------------- */
+/* BASIC SETUP */
+/* ------------------------------------- */
+
 .App {
   text-align: center;
   font-family: 'Poppins', sans-serif;
 }
 
-.App-header {
-  background-color: #2196f3;
-}
+/* ------------------------------------- */
+/* HEADER */
+/* ------------------------------------- */
 
 .App-header {
   background-color: #2195f3d7;
@@ -20,6 +24,10 @@
   font-size: 3.1em;
   margin: 0;
 }
+
+/* ------------------------------------- */
+/* HEADINGS */
+/* ------------------------------------- */
 
 h1 {
   margin: 0;
@@ -38,16 +46,16 @@ h2 {
   color: #7e7d7d;
 }
 
+/* ------------------------------------- */
+/* REUSABLE COMPONENTS */
+/* ------------------------------------- */
+
 p {
   color: #8a8989;
   margin-top: -10px;
   margin-bottom: 40px;
 }
 
-.question-div {
-  margin-top: 60px;
-
-}
 
 .radio-buttons {
   margin-top: 20px;
@@ -61,6 +69,21 @@ p {
   vertical-align: 2px;
 }
 
+.button-div .material-icons {
+  color: white;
+  margin: 0;
+  font-size: 2.2rem;
+  margin-left: 4px;
+}
+
+
+/* ------------------------------------- */
+/* QUESTION SECTION */
+/* ------------------------------------- */
+
+.question-div {
+  margin-top: 60px;
+}
 
 .question-div {
   background-color: white;
@@ -74,19 +97,13 @@ p {
   vertical-align: -32px;
 }
 
-.button-div .material-icons {
-  color: white;
-  margin: 0;
-  font-size: 2.2rem;
-  margin-left: 4px;
-}
+/* ------------------------------------- */
+/* REVIEW SECTION */
+/* ------------------------------------- */
+
 
 .review-form h2 {
   margin-bottom: 0;
-}
-
-.submitted-icon .material-icons {
-  font-size: 200px;
 }
 
 .review-images {
@@ -94,7 +111,12 @@ p {
   filter: invert(.4);
 }
 
-.svg path {
-  fill: #ff0000;
+/* ------------------------------------- */
+/* SUBMITTED SECTION */
+/* ------------------------------------- */
+
+.submitted-icon .material-icons {
+  font-size: 200px;
 }
+
 

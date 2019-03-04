@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './App.css';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route} from 'react-router-dom';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
@@ -14,7 +13,6 @@ import Admin from '../Admin/Admin';
 class App extends Component {
 
   render() {
-    // const { classes } = this.props;
 
     return (
       <div className="App">
@@ -29,10 +27,7 @@ class App extends Component {
             <Route exact path="/admin" component={Admin} />
           </div>
         </Router>
-
-        {/* <FeedbackReview /> */}
       </div>
-
     );
   }
 }

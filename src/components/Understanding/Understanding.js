@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-// import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
-// import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import blue from '@material-ui/core/colors/blue';
@@ -48,20 +46,18 @@ class Understanding extends Component {
     };
 
 
-
+    // captures radio button selection
     handleChange = event => {
         this.setState({ value: event.target.value });
     };
 
+
+    // dispatches radio button selection value to redux and then redirects to 'Support' component
     handleClick = () => {
         console.log('next button clicked');
         this.props.dispatch({ type: 'SET_FEEDBACK_UNDERSTANDING', payload: this.state.value });
         this.props.history.push("/support");
     }
-
-
-
-
 
 
 

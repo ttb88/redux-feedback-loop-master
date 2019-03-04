@@ -146,18 +146,18 @@ const toolbarStyles = theme => ({
 let EnhancedTableToolbar = props => {
     const { numSelected, classes } = props;
 
+    // upon click of trash can button a DELETE request is to send to server and item is deleted based on id (was not able to figure out how to delete multiple items from database at a time)
+    const handleDeleteClick = id => () => {
+        axios({
+            method: 'DELETE',
+            url: `/feedback/` + id
+        }).then(() => {
+            props.getFeedback();
+        }).catch(function () {
+            console.log('Selections could not be deleted');
+        });
 
- const handleDeleteClick = id => () => {
-     console.log(id[0]);
-     
-     axios({
-         method: 'DELETE',
-         url: `/feedback/` + id
-     }).then(() => {
-         props.getFeedback();
-     });
-
-  }
+    }
 
 
     return (
@@ -181,7 +181,7 @@ let EnhancedTableToolbar = props => {
             <div className={classes.actions}>
                 {numSelected > 0 ? (
                     <Tooltip title="Delete">
-                        <IconButton onClick={handleDeleteClick(props.selectedID)}  aria-label="Delete">
+                        <IconButton onClick={handleDeleteClick(props.selectedID)} aria-label="Delete">
                             <DeleteIcon />
                         </IconButton>
                     </Tooltip>
@@ -235,7 +235,7 @@ class EnhancedTable extends React.Component {
 
 
     //DOM is ready
-    componentDidMount() { 
+    componentDidMount() {
         this.getFeedback();
     }
 
@@ -247,10 +247,12 @@ class EnhancedTable extends React.Component {
         }).then((response) => {
             console.log(response.data);
             const feedbackArray = response.data.map(item => createData(item.feeling, item.understanding, item.support, item.comments, item.id))
-            this.setState ({
+            this.setState({
                 data: feedbackArray,
                 selected: [],
-            })
+            }).catch(function () {
+                console.log('Feedback could not be received');
+            });
         });
     }
 
@@ -269,19 +271,19 @@ class EnhancedTable extends React.Component {
 
         if (event.target.checked) {
             this.setState(state => ({ selected: state.data.map(n => n.id) }));
-            
+
             return;
         }
         this.setState({ selected: [] });
     };
 
-  
+
 
     handleClick = (event, id) => {
         const { selected } = this.state;
         const selectedIndex = selected.indexOf(id);
         let newSelected = [];
-        
+
         if (selectedIndex === -1) {
             newSelected = newSelected.concat(selected, id);
         } else if (selectedIndex === 0) {
@@ -314,7 +316,7 @@ class EnhancedTable extends React.Component {
 
         return (
             <Paper className={classes.root}>
-                <EnhancedTableToolbar numSelected={selected.length} selectedID={selected} getFeedback={this.getFeedback}/>
+                <EnhancedTableToolbar numSelected={selected.length} selectedID={selected} getFeedback={this.getFeedback} />
                 <div className={classes.tableWrapper}>
                     <Table className={classes.table} aria-labelledby="tableTitle">
                         <EnhancedTableHead

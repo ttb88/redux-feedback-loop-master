@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
-import logger from 'redux-logger'; // tracks redux state before and after
+import logger from 'redux-logger'; 
 
-// Redux
+
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
@@ -15,11 +15,10 @@ const feedback = {
     comments: '',
 }
 
-
-
+// holds the selections for the 4 feedback questions and is then accessed from the 'FeedbackReview' component to display on DOM and the 'FeedbackSubmitted' component to send to server/database
 const feedbackReducer = (state = feedback, action) => {
     if (action.type === 'SET_FEEDBACK_FEELING') {
-        return { ...state, feeling: action.payload};
+        return { ...state, feeling: action.payload };
     }
     else if (action.type === 'SET_FEEDBACK_UNDERSTANDING') {
         return { ...state, understanding: action.payload };
@@ -36,7 +35,6 @@ const feedbackReducer = (state = feedback, action) => {
     return state;
 }
 
-// The store is the big JavaScript Object that holds all of the information for our application
 const storeInstance = createStore(
     combineReducers({
         feedbackReducer,
@@ -44,6 +42,5 @@ const storeInstance = createStore(
     applyMiddleware(logger),
 );
 
-// Wrap our App in a Provider, this makes Redux available in
-// our entire application
+
 ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));

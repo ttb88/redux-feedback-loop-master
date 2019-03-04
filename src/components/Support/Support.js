@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-// import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
-// import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import blue from '@material-ui/core/colors/blue';
@@ -16,7 +13,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FeedbackReview from '../FeedbackReview/FeedbackReview';
 import Header from '../Header/Header';
-
 
 
 const styles = theme => ({
@@ -47,18 +43,17 @@ class Support extends Component {
         value: '',
     };
 
-
+    // captures radio button selection
     handleChange = event => {
         this.setState({ value: event.target.value });
     };
 
+     // dispatches radio button selection value to redux and then redirects to 'Comments' component
     handleClick = () => {
         console.log('next button clicked');
         this.props.dispatch({ type: 'SET_FEEDBACK_SUPPORT', payload: this.state.value });
         this.props.history.push("/comments");
     }
-
-
 
 
 

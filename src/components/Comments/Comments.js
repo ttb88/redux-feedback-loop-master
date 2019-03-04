@@ -4,10 +4,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-// import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
-// import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import blue from '@material-ui/core/colors/blue';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -56,16 +53,18 @@ class Comments extends Component {
     };
 
 
-
+    // captures text input
     handleChange = event => {
         this.setState({ input: event.target.value });
     };
 
+     // dispatches text input to redux and then redirects to 'FeedbackReview' component
     handleClick = () => {
         console.log('next button clicked');
         this.props.dispatch({ type: 'SET_FEEDBACK_COMMENTS', payload: this.state.input });
         this.props.history.push("/feedback-review");
     }
+
 
     componentDidMount() {
         this.forceUpdate();
@@ -74,27 +73,23 @@ class Comments extends Component {
 
 
 
-
-
-
-
     render() {
         const { classes } = this.props;
 
         return (
-            
+
             <div>
                 <Header />
                 <Fade in={this.state.checked}>
-                <MuiThemeProvider theme={theme}>
-                    <div className="question-div">
+                    <MuiThemeProvider theme={theme}>
+                        <div className="question-div">
 
-                      
+
 
                             <h2>Any comments you would like to leave?</h2>
 
                             <div className="comments-input">
-                            <i className="material-icons">add_comment</i>
+                                <i className="material-icons">add_comment</i>
                                 <FormControl className={classes.formControl} variant="outlined">
                                     <InputLabel
                                         ref={ref => {
@@ -118,13 +113,13 @@ class Comments extends Component {
                                     </Button>
                                 </div>
                             </div>
-                    </div>
+                        </div>
 
-                </MuiThemeProvider>
+                    </MuiThemeProvider>
                 </Fade>
                 <FeedbackReview />
             </div>
-            
+
 
         );
     }
