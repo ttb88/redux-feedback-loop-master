@@ -53,8 +53,8 @@ class Feeling extends Component {
         console.log('next button clicked');
         this.props.dispatch({ type: 'SET_FEEDBACK_FEELING', payload: this.state.value });
         this.props.history.push("/understanding");
+        
     }
-
 
 
 
@@ -124,7 +124,7 @@ class Feeling extends Component {
                         </FormControl>
                     </div>
                 </MuiThemeProvider>
-                <FeedbackReview />
+                <FeedbackReview fadeIn={this.state.fadeIn} />
             </div>
         );
     }

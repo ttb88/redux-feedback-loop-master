@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Header from '../Header/Header';
+import Fade from '@material-ui/core/Fade';
 
 
 
@@ -56,7 +57,9 @@ const theme = createMuiTheme({
 
 
 
+
 class FeedbackReview extends Component {
+
 
     // the header is only displayed if all 4 feedback questions have been answered 
     headerDisplayCheck = () => {
@@ -106,6 +109,43 @@ class FeedbackReview extends Component {
     }
 
 
+    fadeInFeeling = () => {
+        if (this.props.feedbackReducer.feeling !== '') {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    fadeInUnderstanding = () => {
+        if (this.props.feedbackReducer.understanding !== '') {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    fadeInSupport = () => {
+        if (this.props.feedbackReducer.support !== '') {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    fadeInComments = () => {
+        if (this.props.feedbackReducer.comments !== '') {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
 
     render() {
         const { classes } = this.props;
@@ -125,6 +165,7 @@ class FeedbackReview extends Component {
                         <Grid container direction="row" justify="center"
                             alignItems="center">
                             <Grid >
+                                <Fade in={this.fadeInFeeling()}>
                                 <Card className={classes.card}>
                                     <CardContent>
                                         <img src="images/rating.svg" alt="rating" className="review-images" />
@@ -136,8 +177,10 @@ class FeedbackReview extends Component {
                                         </Typography>
                                     </CardContent>
                                 </Card>
+                                </Fade>
                             </Grid>
                             <Grid >
+                                <Fade in={this.fadeInUnderstanding()}>
                                 <Card className={classes.card}>
                                     <CardContent>
                                         <img src="images/knowledge.svg" alt="thinking" className="review-images" />
@@ -149,8 +192,10 @@ class FeedbackReview extends Component {
                                         </Typography>
                                     </CardContent>
                                 </Card>
+                                </Fade>
                             </Grid>
                             <Grid >
+                                <Fade in={this.fadeInSupport()}>
                                 <Card className={classes.card}>
                                     <CardContent>
                                         <img src="images/lifesaver.svg" alt="life perserver" className="review-images" />
@@ -162,8 +207,10 @@ class FeedbackReview extends Component {
                                         </Typography>
                                     </CardContent>
                                 </Card>
+                                </Fade>
                             </Grid>
                             <Grid >
+                                <Fade in={this.fadeInComments()}>
                                 <Card className={classes.card}>
                                     <CardContent>
                                         <img src="images/comment.svg" alt="comment bubble" className="review-images" />
@@ -175,7 +222,7 @@ class FeedbackReview extends Component {
                                         </Typography>
                                     </CardContent>
                                 </Card>
-
+                                </Fade>
                             </Grid>
                         </Grid>
                         <div className="button-div">
