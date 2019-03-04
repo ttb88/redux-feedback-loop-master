@@ -15,6 +15,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import FeedbackReview from '../FeedbackReview/FeedbackReview';
 import Header from '../Header/Header';
+import Fade from '@material-ui/core/Fade';
 
 
 
@@ -51,6 +52,7 @@ class Comments extends Component {
 
     state = {
         input: '',
+        checked: true,
     };
 
 
@@ -80,8 +82,10 @@ class Comments extends Component {
         const { classes } = this.props;
 
         return (
+            
             <div>
                 <Header />
+                <Fade in={this.state.checked}>
                 <MuiThemeProvider theme={theme}>
                     <div className="question-div">
 
@@ -97,18 +101,10 @@ class Comments extends Component {
                                             this.labelRef = ReactDOM.findDOMNode(ref);
                                         }}
                                         htmlFor="component-outlined"
-                                        // htmlFor="input-with-icon-adornment"
                                     >
                                         Comments
                                     </InputLabel>
                                     <OutlinedInput
-                                    // id="input-with-icon-adornment"
-                                    // startAdornment={
-                                    //     <InputAdornment position="start">
-                                    //         <AccountCircle />
-                                    //     </InputAdornment>
-                                    // }
-                                   
                                         id="component-outlined"
                                         value={this.state.name}
                                         onChange={this.handleChange}
@@ -125,8 +121,10 @@ class Comments extends Component {
                     </div>
 
                 </MuiThemeProvider>
+                </Fade>
                 <FeedbackReview />
             </div>
+            
 
         );
     }

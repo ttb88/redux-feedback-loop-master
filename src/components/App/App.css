@@ -7,6 +7,10 @@
   background-color: #2196f3;
 }
 
+.App-header {
+  background-color: #2195f3d7;
+}
+
 .App-title {
   color: white;
   text-align: center;
@@ -31,11 +35,11 @@ h4 {
 h2 {
   font-size: 2.4em;
   letter-spacing: 1px;
-  color: #949494;
+  color: #7e7d7d;
 }
 
 p {
-  color: #949494;
+  color: #8a8989;
   margin-top: -10px;
   margin-bottom: 40px;
 }
@@ -85,7 +89,12 @@ p {
   font-size: 200px;
 }
 
-/* .submitted-div button {
-  margin
-} */
+.review-images {
+  height: 65px;
+  filter: invert(.4);
+}
+
+.svg path {
+  fill: #ff0000;
+}
 

@@ -27,5 +27,16 @@ router.get('/', (req, res) => {
         })
 })
 
+// delete selected row on DOM from database
+router.delete('/:id', (req, res) => {
+    console.log(req.params.id);
+    pool.query(`DELETE FROM "feedback" WHERE "id" IN ($1);`, [req.params.id]).then(() => {
+        res.sendStatus(204);
+    }).catch((error) => {
+        console.log('errors with feedback delete query', error);
+        res.sendStatus(500);
+    })
+});
+
 
 module.exports = router;

@@ -20,10 +20,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 
-let counter = 0;
-function createData(feeling, understanding, support, comments) {
-    counter += 1;
-    return { id: counter, feeling, understanding, support, comments };
+
+// let counter = 0;
+function createData(feeling, understanding, support, comments, id) {
+    // counter += 1;
+
+    return { id: id, feeling, understanding, support, comments };
 }
 
 function desc(a, b, orderBy) {
@@ -61,6 +63,7 @@ class EnhancedTableHead extends React.Component {
     createSortHandler = property => event => {
         this.props.onRequestSort(event, property);
     };
+
 
     render() {
         const { onSelectAllClick, order, orderBy, numSelected, rowCount } = this.props;
@@ -143,6 +146,20 @@ const toolbarStyles = theme => ({
 let EnhancedTableToolbar = props => {
     const { numSelected, classes } = props;
 
+
+ const handleDeleteClick = id => () => {
+     console.log(id[0]);
+     
+     axios({
+         method: 'DELETE',
+         url: `/feedback/` + id
+     }).then(() => {
+         props.getFeedback();
+     });
+
+  }
+
+
     return (
         <Toolbar
             className={classNames(classes.root, {
@@ -164,7 +181,7 @@ let EnhancedTableToolbar = props => {
             <div className={classes.actions}>
                 {numSelected > 0 ? (
                     <Tooltip title="Delete">
-                        <IconButton aria-label="Delete">
+                        <IconButton onClick={handleDeleteClick(props.selectedID)}  aria-label="Delete">
                             <DeleteIcon />
                         </IconButton>
                     </Tooltip>
@@ -218,23 +235,24 @@ class EnhancedTable extends React.Component {
 
 
     //DOM is ready
-    componentDidMount() { // react Component method
+    componentDidMount() { 
         this.getFeedback();
     }
 
+    // receive feedback array, map through and setState to 'data' property which will display values to table on DOM
     getFeedback = () => {
         axios({
             method: 'GET',
             url: '/feedback'
         }).then((response) => {
             console.log(response.data);
-            const feedbackArray = response.data.map(item => createData(item.feeling, item.understanding, item.support, item.comments))
+            const feedbackArray = response.data.map(item => createData(item.feeling, item.understanding, item.support, item.comments, item.id))
             this.setState ({
                 data: feedbackArray,
+                selected: [],
             })
         });
     }
-
 
     handleRequestSort = (event, property) => {
         const orderBy = property;
@@ -248,18 +266,22 @@ class EnhancedTable extends React.Component {
     };
 
     handleSelectAllClick = event => {
+
         if (event.target.checked) {
             this.setState(state => ({ selected: state.data.map(n => n.id) }));
+            
             return;
         }
         this.setState({ selected: [] });
     };
 
+  
+
     handleClick = (event, id) => {
         const { selected } = this.state;
         const selectedIndex = selected.indexOf(id);
         let newSelected = [];
-
+        
         if (selectedIndex === -1) {
             newSelected = newSelected.concat(selected, id);
         } else if (selectedIndex === 0) {
@@ -272,7 +294,6 @@ class EnhancedTable extends React.Component {
                 selected.slice(selectedIndex + 1),
             );
         }
-
         this.setState({ selected: newSelected });
     };
 
@@ -293,7 +314,7 @@ class EnhancedTable extends React.Component {
 
         return (
             <Paper className={classes.root}>
-                <EnhancedTableToolbar numSelected={selected.length} />
+                <EnhancedTableToolbar numSelected={selected.length} selectedID={selected} getFeedback={this.getFeedback}/>
                 <div className={classes.tableWrapper}>
                     <Table className={classes.table} aria-labelledby="tableTitle">
                         <EnhancedTableHead

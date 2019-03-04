@@ -10,7 +10,6 @@ import blue from '@material-ui/core/colors/blue';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Header from '../Header/Header';
 
@@ -40,14 +39,15 @@ const styles = theme => ({
         marginBottom: 10,
     },
     title: {
-        fontSize: 35,
+        fontSize: 25,
     },
     pos: {
-        marginBottom: 12,
+        marginBottom: 20,
     },
 });
 
 const theme = createMuiTheme({
+    shadows: ["none"],
     palette: {
         primary: { main: blue[500] },
     },
@@ -77,13 +77,13 @@ class FeedbackReview extends Component {
         const { classes } = this.props;
         
         if (this.props.feedbackReducer.feeling == '' || this.props.feedbackReducer.understanding == '' || this.props.feedbackReducer.support == '' || this.props.feedbackReducer.comments == '') {
-            return <Button style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" disabled className={classNames(classes.margin, classes.cssRoot)}>
+            return <Button style={{ fontSize: '20px', marginTop: '40px' }} size='large' variant="contained" color="secondary" disabled className={classNames(classes.margin, classes.cssRoot)}>
                 Incomplete
                 <i className="material-icons">indeterminate_check_box</i>
             </Button>
         }
         else {
-            return <Button onClick={this.handleFeedbackSubmit} style={{ fontSize: '20px', marginTop: '60px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
+            return <Button onClick={this.handleFeedbackSubmit} style={{ fontSize: '20px', marginTop: '40px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
                 Submit
                 <i className="material-icons">check_box</i>
             </Button>
@@ -118,67 +118,60 @@ class FeedbackReview extends Component {
                     <h2>Feedback Review</h2>
                     <p>review and submit once complete</p>
                 </div>
+                <div className="review-cards"></div>
                 <div className={classes.root} style={{ paddingRight: 20, paddingLeft: 20 }}>
                     <Grid container direction="row" justify="center"
                         alignItems="center">
                         <Grid >
                             <Card className={classes.card}>
                                 <CardContent>
+                                    <img src="images/rating.svg" className="review-images"/>
                                     <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
                                         Feelings
                                     </Typography>
-                                    <Typography variant="h2" component="h2" style={{ color: '#38c985' }}>
+                                    <Typography variant="h2" component="h2" style={{ color: '#2195f3d7' }}>
                                         {this.props.feedbackReducer.feeling}
                                      </Typography>
                                 </CardContent>
-                                {/* <CardActions>
-                                 <Button size="small">Learn More</Button>
-                                </CardActions> */}
                             </Card>
                         </Grid>
                         <Grid >
                             <Card className={classes.card}>
                                 <CardContent>
+                                        <img src="images/knowledge.svg" className="review-images" />
                                     <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
                                         Understanding
                                      </Typography>
-                                    <Typography variant="h2" component="h2" style={{ color: '#38c985' }}>
+                                    <Typography variant="h2" component="h2" style={{ color: '#2195f3d7' }}>
                                         {this.props.feedbackReducer.understanding}
                                  </Typography>
                                 </CardContent>
-                                {/* <CardActions>
-                                 <Button size="small">Learn More</Button>
-                                 </CardActions> */}
                             </Card>
                         </Grid>
                         <Grid >
                             <Card className={classes.card}>
                                 <CardContent>
+                                        <img src="images/lifesaver.svg" className="review-images" />
                                     <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
                                         Support
                                      </Typography>
-                                    <Typography variant="h2" component="h2" style={{ color: '#38c985' }}>
+                                    <Typography variant="h2" component="h2" style={{ color: '#2195f3d7' }}>
                                         {this.props.feedbackReducer.support}
                                  </Typography>
                                 </CardContent>
-                                {/* <CardActions>
-                                 <Button size="small">Learn More</Button>
-                                 </CardActions> */}
                             </Card>
                         </Grid>
                         <Grid >
                             <Card className={classes.card}>
                                 <CardContent>
+                                        <img src="images/comment.svg" className="review-images" />
                                     <Typography variant="h4" className={classes.title} color="textSecondary" gutterBottom>
                                         Comments
                                    </Typography>
-                                    <Typography variant="h6" component="h6" style={{ color: '#38c985', textAlign: 'left' }}>
+                                    <Typography variant="h6" component="h6" style={{ color: '#2195f3d7', lineHeight: '20px'}}>
                                         {this.props.feedbackReducer.comments}
                                   </Typography>
                                 </CardContent>
-                                {/* <CardActions>
-                                <Button size="small">Learn More</Button>
-                                </CardActions> */}
                             </Card>
 
                         </Grid>
