@@ -16,7 +16,6 @@ import Fade from '@material-ui/core/Fade';
 
 
 
-
 const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
@@ -76,6 +75,7 @@ class Comments extends Component {
 
     render() {
         const { classes } = this.props;
+        //same as const classes = this.props.classes
 
         return (
 

@@ -128,12 +128,7 @@ class FeedbackReview extends Component {
     }
 
     fadeInSupport = () => {
-        if (this.props.feedbackReducer.support !== '') {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return this.props.feedbackReducer.support !== '';
     }
 
     fadeInComments = () => {

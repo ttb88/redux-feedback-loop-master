@@ -4,15 +4,12 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import blue from '@material-ui/core/colors/blue';
 import Button from '@material-ui/core/Button';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FeedbackReview from '../FeedbackReview/FeedbackReview';
 import Header from '../Header/Header';
+import RadioChoice from '../RadioChoice/RadioChoice';
 
 
 const styles = theme => ({
@@ -45,6 +42,8 @@ class Feeling extends Component {
 
     // captures radio button selection
     handleChange = event => {
+        console.log('my name kevin bacon');
+        
         this.setState({ value: event.target.value });
     };
 
@@ -55,9 +54,6 @@ class Feeling extends Component {
         this.props.history.push("/understanding");
         
     }
-
-
-
 
 
     render() {
@@ -73,47 +69,7 @@ class Feeling extends Component {
                             <h2>How are you feeling today?</h2>
 
                             <div className="radio-buttons">
-                                <RadioGroup
-                                    style={{ display: 'block' }}
-                                    aria-label="position"
-                                    name="position"
-                                    value={this.state.value}
-                                    onChange={this.handleChange}
-                                    row
-                                >
-                                    <i className="material-icons">sentiment_very_dissatisfied</i>
-                                    <FormControlLabel
-                                        value="1"
-                                        control={<Radio color="primary" />}
-                                        label={<Typography style={{ fontSize: '1.1rem', color: '#8a8989' }}>1</Typography>}
-                                        labelPlacement="bottom"
-                                    />
-                                    <FormControlLabel
-                                        value="2"
-                                        control={<Radio color="primary" />}
-                                        label={<Typography style={{ fontSize: '1.1rem', color: '#8a8989' }}>2</Typography>}
-                                        labelPlacement="bottom"
-                                    />
-                                    <FormControlLabel
-                                        value="3"
-                                        control={<Radio color="primary" />}
-                                        label={<Typography style={{ fontSize: '1.1rem', color: '#8a8989' }}>3</Typography>}
-                                        labelPlacement="bottom"
-                                    />
-                                    <FormControlLabel
-                                        value="4"
-                                        control={<Radio color="primary" />}
-                                        label={<Typography style={{ fontSize: '1.1rem', color: '#8a8989' }}>4</Typography>}
-                                        labelPlacement="bottom"
-                                    />
-                                    <FormControlLabel
-                                        value="5"
-                                        control={<Radio color="primary" />}
-                                        label={<Typography style={{ fontSize: '1.1rem', color: '#8a8989' }}>5</Typography>}
-                                        labelPlacement="bottom"
-                                    />
-                                    <i className="material-icons">sentiment_very_satisfied</i>
-                                </RadioGroup>
+                               <RadioChoice value={this.state.value} handleChange={this.handleChange} />
                                 <div className="button-div">
                                     <Button onClick={this.handleClick} type="submit" value="submit" style={{ fontSize: '18px', marginTop: '35px' }} size='large' variant="contained" color="primary" className={classNames(classes.margin, classes.cssRoot)}>
                                         Next
